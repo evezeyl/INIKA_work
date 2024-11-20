@@ -81,7 +81,7 @@ library(here)
 library(tidyverse)
 ```
 
-
+<!--
 ## Getting help - and what functions do 
 
 F1 
@@ -91,6 +91,8 @@ F1
 ?library()
 help("library")
 ```
+-->
+
 
 ## we get out data 
 ```{r}
@@ -160,8 +162,174 @@ glimpse(human_data)
 str(human_data)
 ```
 
-- viewing your data or better an abstract of your data. Notion of pipe 
-```{r}
 
+- renaming columns names (easier to use)
+
+```{r}
+original_names <- colnames(human_data)
+original_names
+```
+
+```{r}
+library(tidyverse)
+new_names <- str_replace_all(original_names, " ", "_" )
+new_names
+new_names[88]
+```
+
+- regex pattern 
+```{r}
+new_names2 <- str_replace_all(
+  new_names, "[?/,;.*()-]", "_" ) %>%
+  str_remove_all("(^_*)|(_*$)")
+
+
+
+new_names2
+new_names2[88]
+
+str_replace_all(
+  "emanuel /; ", 
+  "[?/,;.*()-]", 
+  "_" ) %>%
+  str_replace_all(., " ", "_")
+```
+
+
+```{r}
+colnames(human_data) <- new_names2
+colnames(human_data)[88]
+```
+
+
+- selecting columns
+
+```{r}
+human_data %>% 
+  select(INIKA_OH_TZ_ID, Age__yrs_, Gender) %>%
+  head()
+```
+
+
+```{r}
+human_data_selection <- 
+  human_data %>%
+  select(INIKA_OH_TZ_ID, Age__yrs, Gender, Enter_a_date, Region, District, 
+         Specify_if_other_district, Sample, Season, Origin_of_sample, 
+         Which_class_grade_are_you, 
+         Who_is_your_caretaker, 
+         If_others__mention, 
+         What_is_your_occupation_and_or_of_your_caretaker, 
+         Have_you_ever_heard_about_AMR, If_yes__how_did_you_get_this_information, 
+         Have_you_or_your_children_used_any_antibiotics_at_any_time, 
+         If_yes__where_did_you_get_these_drugs_from,
+         If_it_was_drug_sellers_or_pharmacy__did_you_have_a_prescription_from_the_doctor_prescriber,
+         GPS_coordinates_latitude, GPS_coordinates_longitude) 
+```
+
+# CLEAN 
+
+
+```{r}
+human_data <- 
+  readr::read_csv2(path_data)
+```
+
+
+```{r}
+new_columns <- 
+  colnames(human_data) %>%
+  str_replace_all(" ", "_") %>%
+  str_replace_all( "[?/,;.*()-]", "_") %>%
+  str_remove_all("(^_*)|(_*$)")
+```
+
+```{r}
+colnames(human_data) <- new_columns
+```
+
+```{r}
+human_data_selection <- 
+  human_data %>%
+  select(INIKA_OH_TZ_ID, Age__yrs, Gender, Enter_a_date, Region, District, 
+         Specify_if_other_district, Sample, Season, Origin_of_sample, 
+         Which_class_grade_are_you, 
+         Who_is_your_caretaker, 
+         If_others__mention, 
+         What_is_your_occupation_and_or_of_your_caretaker, 
+         Have_you_ever_heard_about_AMR, If_yes__how_did_you_get_this_information, 
+         Have_you_or_your_children_used_any_antibiotics_at_any_time, 
+         If_yes__where_did_you_get_these_drugs_from,
+         If_it_was_drug_sellers_or_pharmacy__did_you_have_a_prescription_from_the_doctor_prescriber,
+         GPS_coordinates_latitude, GPS_coordinates_longitude) 
+
+human_data_selection %>% View()
+human_data_selection %>% head()
+```
+
+
+->  viewing your data or better an abstract of your data. Notion of pipe and selecting columns 
+
+
+```{r}
+glimpse(human_data_selection)
+str(human_data_selection)
+```
+
+# HERE 
+- something does not make sense - empty column 
+
+```{r}
+human_data_selection <- 
+  human_data_selection %>%
+  select(-Specify_if_other_district) %>%
+  mutate_at(vars(Age__yrs), as.integer) %>%
+  mutate_if(is.character, factor) %>%
+  mutate_at(vars(INIKA_OH_TZ_ID) , as.character) 
+```
+
+```{r}
+str(human_data_selection)
+```
+
+
+```{r}
+levels(test$Region)
+```
+
+- summary 
+```{r}
+summary(
+  human_data_selection
+  )
+```
+
+
+- looking at the content of single columns
+
+- different values contained in columns 
+
+- factors vs character 
+
+
+- changing the types of the columns so they can be processed correctly 
+
+
+
+
+```{r}
+human_data_selection %>%
+  filter(INIKA_OH_TZ_ID == "238")
+```
+
+
+```{r}
+human_data_selection %>%
+  filter(INIKA_OH_TZ_ID != "238") %>%
+  filter(is.na(Gender))
+  #summary() 
+
+#%>%
+# View()
 ```
 

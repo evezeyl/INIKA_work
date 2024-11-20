@@ -1,0 +1,17 @@
+---
+title: "TODO"
+author: "Eve Fiskebeck"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+- [ ] A little report of the course - what has been not been done 
+
+- [ ] Talk with Team - preparation of data selection : the script needs to be done before hand
+    - will need to think what to select  - after species identification (species, same farm, area ...)
+    - will be ca 100 possibilities sequencing total for each student - then need to select two species 
+    - need to find out what data I can use to make the looking at at what is sampled and have an overview of the data we have 
