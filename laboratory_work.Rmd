@@ -1,0 +1,61 @@
+---
+title: "Laboratory Work"
+author: "Eve Fiskebeck"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Laboratory course 
+
+We selected 20 isolates :
+
+-   6 isolates are ***Klebsiella spp.*** isolates
+-   6 isolates are *Escherichia coli* isolates
+-   8 isolates are *Salmonella spp.* isolates
+
+
+## Results of isolates species  identification
+
+<!--
+This is to view a file / image in the document when knitted 
+![integrated pdf](files/VITECK RESULTS19_11_2024.pdf)
+-->
+
+<!-- I have made a link to a file
+[linked pdf](files/VITECK RESULTS19_11_2024.pdf)
+ -->
+ 
+![results1](files/image1.png)
+
+
+
+![results2](files/image2.png)
+
+- some isolates could not be identified 
+- the reasons would be
+    - no colony
+    - it could be several strains (>2) 
+         - not being to be able to distinguish between species OR 
+         - it can be an admixture of species  
+- some of the strains have something else 
+  - Enterobacter (not interested in)
+
+  
+Emmanuel : A2 and C1
+
+Maulid : A4 and C4
+
+Anna : B3 and D4
+
+Janicke and Camilla : take the 3 others - they demonstrate and the students do the same. 
+C&J D1, D2, C2
+
+- DNA extraction maybe later today. 
+
+
+
+
