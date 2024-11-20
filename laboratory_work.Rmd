@@ -17,6 +17,9 @@ We selected 20 isolates :
 -   6 isolates are *Escherichia coli* isolates
 -   8 isolates are *Salmonella spp.* isolates
 
+## Problem fixing
+
+- Replating - to github
 
 ## Results of isolates species  identification
 

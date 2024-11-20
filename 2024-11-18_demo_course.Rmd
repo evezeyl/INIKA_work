@@ -125,6 +125,7 @@ dput(
   )
 ```
 
+
 - explanation: c() is to make vectors
 
 ```{r}
