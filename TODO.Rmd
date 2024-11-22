@@ -15,3 +15,6 @@ knitr::opts_chunk$set(echo = TRUE)
     - will need to think what to select  - after species identification (species, same farm, area ...)
     - will be ca 100 possibilities sequencing total for each student - then need to select two species 
     - need to find out what data I can use to make the looking at at what is sampled and have an overview of the data we have 
+
+- [ ] Check how space is used in google drive - ownership - does it count on the person that upload
+
